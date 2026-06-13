@@ -1,26 +1,39 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
 }
 
 android {
     namespace = "com.KiriCode.com"
-    compileSdk {
-        version = release(37)
-    }
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.KiriCode.com"
-        minSdk = 37
-        targetSdk = 37
+        minSdk = 24
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("release.keystore")
+            storePassword = "kiricode123"
+            keyAlias = "kiricode"
+            keyPassword = "kiricode123"
+            enableV1Signing = true
+            enableV2Signing = true
+            enableV3Signing = true
+            enableV4Signing = true
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -33,6 +46,10 @@ android {
     }
     buildFeatures {
         prefab = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     externalNativeBuild {
         cmake {
@@ -47,6 +64,16 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.games.activity)
+    
+    // Jetpack Compose Dependencies
+    val composeVersion = "1.6.8"
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.material3:material3:1.2.1")
+    implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
+    implementation("androidx.activity:activity-compose:1.9.0")
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    implementation("androidx.compose.animation:animation:$composeVersion")
+    
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
