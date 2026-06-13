@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         Quest("sql_join", "sql", "Algorithm Quest", "easy", "Aggregating Inactive Users",
             "Select all users who haven't logged a submission in the past 30 days, joining the users and submissions table.",
             "SELECT u.user_id, u.username, COUNT(s.submission_id) as submissions_count\nFROM users u\nLEFT JOIN submissions s ON u.user_id = s.user_id\nWHERE u.last_activity < NOW() - INTERVAL '30 days'\nGROUP BY u.user_id, u.username;") { code ->
-            code.toLowerCase().contains("left join") && code.toLowerCase().contains("group by")
+            code.lowercase().contains("left join") && code.lowercase().contains("group by")
         }
     )
 
@@ -326,7 +326,7 @@ class MainActivity : AppCompatActivity() {
 
         // Character profile values
         dashUsername.text = "GuestCoder"
-        dashTierBadge.text = playerTier.toUpperCase()
+        dashTierBadge.text = playerTier.uppercase()
         dashLevelLabel.text = "Level $playerLevel ($playerTier Tier)"
 
         // Stats
@@ -377,7 +377,7 @@ class MainActivity : AppCompatActivity() {
             val text1 = view.findViewById<TextView>(android.R.id.text1)
             val text2 = view.findViewById<TextView>(android.R.id.text2)
 
-            text1.text = "${data.icon}  ${lang.toUpperCase()}"
+            text1.text = "${data.icon}  ${lang.uppercase()}"
             text1.setTextColor(ContextCompat.getColor(this, R.color.white))
             text1.textSize = 14f
 
@@ -532,11 +532,11 @@ class MainActivity : AppCompatActivity() {
     private fun loadSelectedQuestDetails() {
         val q = selectedQuest ?: return
         arenaQuestTitle.text = q.title
-        arenaQuestDifficulty.text = q.difficulty.toUpperCase()
+        arenaQuestDifficulty.text = q.difficulty.uppercase()
         arenaQuestDesc.text = q.desc
         arenaCodeInput.setText(q.template)
 
-        arenaEditorLangLbl.text = "${q.lang.toUpperCase()} INTERACTIVE IDE"
+        arenaEditorLangLbl.text = "${q.lang.uppercase()} INTERACTIVE IDE"
         arenaConsoleLog.text = "Sandbox console loaded for quest: ${q.title}."
 
         // Update difficulty tag color
@@ -615,7 +615,7 @@ class MainActivity : AppCompatActivity() {
                 if (data.xp >= nextLvlXP) {
                     data.level += 1
                     data.xp = 0
-                    Toast.makeText(this, "Language level up: ${q.lang.toUpperCase()} Level ${data.level}!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Language level up: ${q.lang.uppercase()} Level ${data.level}!", Toast.LENGTH_LONG).show()
                 }
 
                 // Check achievements & level ups
@@ -747,7 +747,7 @@ class MainActivity : AppCompatActivity() {
         val tabs = listOf("global", "python", "javascript", "java", "sql")
         for (tab in tabs) {
             val btn = Button(this)
-            btn.text = tab.toUpperCase()
+            btn.text = tab.uppercase()
             btn.background = null
             btn.setTextColor(ContextCompat.getColor(this, if (tab == selectedLbTab) R.color.neon_cyan else R.color.text_muted))
             btn.textSize = 12f
@@ -1053,7 +1053,7 @@ class MainActivity : AppCompatActivity() {
         logToSystemConsole(input)
         techConsoleInput.setText("")
 
-        val cmd = input.toLowerCase()
+        val cmd = input.lowercase()
         when {
             cmd == "help" -> {
                 logToSystemConsole("Available commands: status, db stats, kafka info, redis rank, clear")
