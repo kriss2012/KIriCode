@@ -1,0 +1,40 @@
+Generate Release APK
+Windows
+
+gradlew assembleRelease
+
+Linux/macOS
+
+bash
+./gradlew assembleRelease
+
+APK output location:
+
+text
+app/build/outputs/apk/release/app-release.apk
+
+
+Generate Release App Bundle (AAB)
+
+Windows
+
+bash
+gradlew bundleRelease
+
+
+Linux/macOS
+
+bash
+./gradlew bundleRelease
+
+
+AAB output location:
+
+text
+app/build/outputs/bundle/release/app-release.aab
+
+
+Clean Build (Optional)
+
+bash
+gradlew clean

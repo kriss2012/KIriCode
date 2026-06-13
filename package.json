@@ -1,0 +1,21 @@
+{
+  "name": "kiricode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kriss2012/KIriCode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kriss2012/KIriCode/issues"
+  },
+  "homepage": "https://github.com/kriss2012/KIriCode#readme"
+}
