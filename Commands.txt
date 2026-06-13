@@ -1,40 +1,63 @@
-Generate Release APK
-Windows
+===================================================================
+KIRICODE RELEASE AND DEPLOYMENT CHEATSHEET
+===================================================================
 
-gradlew assembleRelease
-
-Linux/macOS
-
-bash
-./gradlew assembleRelease
-
-APK output location:
-
-text
-app/build/outputs/apk/release/app-release.apk
+1. PROJECT & PACKAGE IDENTIFIERS
+-------------------------------------------------------------------
+Package Name (Application ID): com.KiriCode.com
+Build SDK Settings:
+  - Compile SDK: 35 (Required by latest AndroidX/Compose components)
+  - Target SDK: 34
+  - Minimum SDK: 24
 
 
-Generate Release App Bundle (AAB)
+2. RELEASE SIGNING CONFIGURATION (KEYSTORE)
+-------------------------------------------------------------------
+Keystore file location: app/release.keystore
+Keystore Password:      kiricode123
+Key Alias:              kiricode
+Key Password:           kiricode123
 
-Windows
-
-bash
-gradlew bundleRelease
-
-
-Linux/macOS
-
-bash
-./gradlew bundleRelease
+Note: Keep the keystore file secure. If lost, you will not be able to 
+update the app on the Play Store.
 
 
-AAB output location:
+3. BUILD COMMANDS
+-------------------------------------------------------------------
+Clean Build (Recommended before release):
+  Windows:     gradlew clean
+  Linux/macOS: ./gradlew clean
 
-text
-app/build/outputs/bundle/release/app-release.aab
+Generate Release APK (For direct installation/testing):
+  Windows:     gradlew assembleRelease
+  Linux/macOS: ./gradlew assembleRelease
+  Output Path: app/build/outputs/apk/release/app-release.apk
+
+Generate Release App Bundle (AAB - Required for Google Play Store):
+  Windows:     gradlew bundleRelease
+  Linux/macOS: ./gradlew bundleRelease
+  Output Path: app/build/outputs/bundle/release/app-release.aab
 
 
-Clean Build (Optional)
+4. PLAY STORE PREPARATION & LAUNCH CHECKLIST
+-------------------------------------------------------------------
+[ ] Versioning:
+    - Increment 'versionCode' (integer) in app/build.gradle.kts for every release.
+    - Update 'versionName' (e.g., "1.0.1") to display to users.
 
-bash
-gradlew clean
+[ ] Store Listing Metadata:
+    - App Title (Max 30 characters).
+    - Short Description (Max 80 characters).
+    - Full Description (Max 4000 characters).
+
+[ ] Required Graphic Assets:
+    - App Icon: 512 x 512 px, 32-bit PNG (with alpha), max 1MB.
+    - Feature Graphic: 1024 x 500 px, PNG or JPEG.
+    - Screenshots: Min 2, max 8 screenshots for phone (and tablets if supported), 
+      resolutions between 320px and 3840px.
+
+[ ] Policy & Content requirements:
+    - Privacy Policy URL (hosted online).
+    - Content Rating questionnaire.
+    - Target Audience setting.
+    - Data Safety declarations (disclosing what data, if any, is collected).
