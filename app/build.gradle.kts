@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.KiriCode.com"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.KiriCode.com"
