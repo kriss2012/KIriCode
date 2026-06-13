@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_surface"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TIER UP!"
+        android:textColor="@color/neon_yellow"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dialog_old_lvl"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/avatar_bg"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/text_muted"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="➔"
+            android:textColor="@color/neon_yellow"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/dialog_new_lvl"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/avatar_bg"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dialog_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Congratulations! You have evolved into a Coder.\nNew challenges, features, and streak bonuses have been unlocked."
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:lineSpacingExtra="4dp" />
+
+    <Button
+        android:id="@+id/dialog_btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_cyan_bg"
+        android:text="Continue Quest"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+</LinearLayout>
