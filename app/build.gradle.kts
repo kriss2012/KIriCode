@@ -51,12 +51,12 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.14"
     }
-    externalNativeBuild {
-        cmake {
-            path = file("src/main/cpp/CMakeLists.txt")
-            version = "3.22.1"
-        }
-    }
+//    externalNativeBuild {
+//        cmake {
+//            path = file("src/main/cpp/CMakeLists.txt")
+//            version = "3.22.1"
+//        }
+//    }
 }
 
 dependencies {
@@ -73,6 +73,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.9.0")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.animation:animation:$composeVersion")
+    implementation("androidx.compose.ui:ui-text-google-fonts:$composeVersion")
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
