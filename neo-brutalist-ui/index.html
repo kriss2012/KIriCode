@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KiriFlow - A high-fidelity, interactive Neo-Brutalist mobile SaaS dashboard and task application. Build, track, and optimize with bold visuals.">
+  <title>KiriFlow // Neo-Brutalist Mobile UI</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- Showcase Wrapper (Desktop Presenter) -->
+  <div class="showcase-container">
+    
+    <!-- Left Sidebar: Info Panel (Desktop Only) -->
+    <div class="showcase-sidebar">
+      <div class="brand-badge">DESIGN SYSTEM</div>
+      <h1 class="showcase-title">KiriFlow</h1>
+      <p class="showcase-desc">
+        A premium Neo-Brutalist mobile application UI designed for modern startup teams. Combining Notion's clean structure, Figma's usability, and bold, high-contrast aesthetics.
+      </p>
+      
+      <!-- Palette Specs -->
+      <div class="spec-card">
+        <h3 class="spec-card-title">Color Palette</h3>
+        <div class="color-swatches">
+          <div class="swatch" style="background-color: #FFFFFF; border: 2px solid #000;">
+            <span class="swatch-label">80% White</span>
+            <span class="swatch-hex">#FFFFFF</span>
+          </div>
+          <div class="swatch" style="background-color: #FFE680; color: #000; border: 2px solid #000;">
+            <span class="swatch-label">18% Yellow</span>
+            <span class="swatch-hex">#FFE680</span>
+          </div>
+          <div class="swatch" style="background-color: #000000; color: #FFF; border: 2px solid #000;">
+            <span class="swatch-label">2% Black</span>
+            <span class="swatch-hex">#000000</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Sandbox Controls -->
+      <div class="spec-card">
+        <h3 class="spec-card-title">Device Preview</h3>
+        <p class="spec-text">Interact directly with the mobile screen on the right. You can switch tabs, add tasks, toggle statuses, and simulate alerts.</p>
+        <div class="sandbox-buttons">
+          <button class="btn btn-sm btn-yellow" onclick="simulateAlert('success', 'Syncing complete!')">Simulate Sync</button>
+          <button class="btn btn-sm" onclick="simulateAlert('warning', 'Low disk space warning.')">Trigger Warning</button>
+        </div>
+      </div>
+      
+      <div class="footer-note">
+        Antigravity &copy; 2026. Handcrafted with precision.
+      </div>
+    </div>
+    
+    <!-- Center: The Phone Mockup Frame -->
+    <div class="phone-frame-wrapper">
+      <div class="phone-device">
+        <!-- Speaker / Camera Notch -->
+        <div class="phone-notch"></div>
+        
+        <!-- Screen Content -->
+        <div class="phone-screen">
+          
+          <!-- Sticky Status Bar -->
+          <div class="status-bar">
+            <span class="status-time">09:41 AM</span>
+            <div class="status-icons">
+              <!-- Wifi Icon SVG -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+              </svg>
+              <!-- Battery Icon SVG -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect>
+                <line x1="22" y1="11" x2="22" y2="13"></line>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- Sticky Top Header -->
+          <header class="app-header">
+            <div class="logo-group">
+              <div class="logo-square">KF</div>
+              <span class="logo-text">KiriFlow</span>
+            </div>
+            <div class="header-actions">
+              <button class="header-btn" id="btn-notification" aria-label="Notifications" onclick="toggleNotifications()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="notification-badge"></span>
+              </button>
+            </div>
+          </header>
+          
+          <!-- Floating Alerts Container (inside the app view) -->
+          <div class="app-alerts" id="app-alerts"></div>
+          
+          <!-- Scrollable Content View -->
+          <main class="app-content" id="app-content">
+            
+            <!-- SECTION 1: DASHBOARD (Active by default) -->
+            <section class="content-section active" id="sec-dashboard">
+              
+              <!-- User Welcome Hero -->
+              <div class="welcome-hero">
+                <div class="welcome-text">
+                  <h2>Hey, Partner! 👋</h2>
+                  <p>Here's your startup flow overview for today.</p>
+                </div>
+                <div class="welcome-avatar">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="#FFE680" stroke="#000" stroke-width="2">
+                    <circle cx="12" cy="8" r="5"></circle>
+                    <path d="M3 20c0-4 4-7 9-7s9 3 9 7"></path>
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Core Statistics Grid -->
+              <div class="grid-2">
+                <div class="stat-card yellow-card">
+                  <span class="stat-label">COMPLETED</span>
+                  <div class="stat-value" id="stat-completed-val">12</div>
+                  <span class="stat-trend">+4 this week</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-label">EFFICIENCY</span>
+                  <div class="stat-value" id="stat-efficiency-val">94%</div>
+                  <span class="stat-trend trend-neutral">Target: 90%</span>
+                </div>
+              </div>
+              
+              <!-- Large Callout Card (Highlighted) -->
+              <div class="promo-card">
+                <span class="badge badge-black">FEATURED TASK</span>
+                <h3>Scale Server Resources</h3>
+                <p>Ensure database performance is stable ahead of tomorrow's product launch campaign.</p>
+                <div class="promo-actions">
+                  <button class="btn btn-yellow" onclick="goToTab('tasks')">View Backlog</button>
+                  <button class="btn btn-secondary" onclick="simulateAlert('success', 'Server auto-scaled!')">Quick Action</button>
+                </div>
+              </div>
+              
+              <!-- Mini Checklist preview -->
+              <div class="section-title-group">
+                <h3>Today's Highlights</h3>
+                <span class="accent-link" onclick="goToTab('tasks')">View all</span>
+              </div>
+              
+              <div class="task-list-mini" id="mini-task-list">
+                <!-- Dynamically populated via JS -->
+              </div>
+              
+            </section>
+            
+            <!-- SECTION 2: TASKS -->
+            <section class="content-section" id="sec-tasks">
+              <div class="view-header">
+                <h2>Workspace Tasks</h2>
+                <p>Manage, prioritize and execute tasks in real-time.</p>
+              </div>
+              
+              <!-- Add Task Trigger Card -->
+              <div class="form-container-card">
+                <h4 class="form-title">Add New Task</h4>
+                <form id="add-task-form" onsubmit="handleAddTask(event)">
+                  <div class="form-group">
+                    <label for="task-title" class="form-label">Task Name</label>
+                    <input type="text" id="task-title" class="form-input" placeholder="e.g. Write V2 API specs" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="task-priority" class="form-label">Priority</label>
+                    <select id="task-priority" class="form-input">
+                      <option value="High">High Priority</option>
+                      <option value="Medium" selected>Medium Priority</option>
+                      <option value="Low">Low Priority</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-yellow w-full justify-center">
+                    <span>Create Task</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+              
+              <!-- Task Filter Bar -->
+              <div class="task-filter-bar">
+                <button class="filter-tab active" data-filter="all" onclick="filterTasks('all')">All (<span id="count-all">0</span>)</button>
+                <button class="filter-tab" data-filter="active" onclick="filterTasks('active')">Active (<span id="count-active">0</span>)</button>
+                <button class="filter-tab" data-filter="completed" onclick="filterTasks('completed')">Done (<span id="count-completed">0</span>)</button>
+              </div>
+              
+              <!-- Full Scrollable Task List -->
+              <div class="task-list-full" id="full-task-list">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </section>
+            
+            <!-- SECTION 3: ANALYTICS -->
+            <section class="content-section" id="sec-analytics">
+              <div class="view-header">
+                <h2>Performance Analytics</h2>
+                <p>Visual statistics generated from live workspace events.</p>
+              </div>
+              
+              <!-- Main Stat card -->
+              <div class="stat-card yellow-card mb-24">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span class="stat-label">TOTAL WORKSPACE SCORE</span>
+                    <div class="stat-value-large">8,420</div>
+                  </div>
+                  <span class="badge badge-black">+14.2%</span>
+                </div>
+                <div class="bar-progress-container mt-16">
+                  <div class="bar-progress-fill" style="width: 78%"></div>
+                </div>
+                <div class="flex justify-between text-xs mt-8">
+                  <span>Weekly Goal: 10,000 pts</span>
+                  <span>78% achieved</span>
+                </div>
+              </div>
+              
+              <!-- SVG Bar Chart -->
+              <div class="analytics-chart-card">
+                <div class="flex justify-between items-center mb-16">
+                  <h4 class="chart-title">Velocity Metric</h4>
+                  <div class="chart-options">
+                    <button class="btn btn-sm btn-yellow" id="chart-toggle-week" onclick="toggleChartRange('week')">Weekly</button>
+                    <button class="btn btn-sm" id="chart-toggle-month" onclick="toggleChartRange('month')">Monthly</button>
+                  </div>
+                </div>
+                
+                <div class="chart-container">
+                  <!-- Custom Neo-Brutalist SVG Chart -->
+                  <svg id="svg-chart" viewBox="0 0 320 160" width="100%" height="160">
+                    <!-- Grid Lines -->
+                    <line x1="40" y1="20" x2="300" y2="20" stroke="#E6E6E6" stroke-width="1.5" stroke-dasharray="4,4"></line>
+                    <line x1="40" y1="60" x2="300" y2="60" stroke="#E6E6E6" stroke-width="1.5" stroke-dasharray="4,4"></line>
+                    <line x1="40" y1="100" x2="300" y2="100" stroke="#E6E6E6" stroke-width="1.5" stroke-dasharray="4,4"></line>
+                    <line x1="40" y1="130" x2="300" y2="130" stroke="#000000" stroke-width="2"></line>
+                    
+                    <!-- Y Axis Labels -->
+                    <text x="15" y="24" class="chart-axis-text">100</text>
+                    <text x="15" y="64" class="chart-axis-text">50</text>
+                    <text x="15" y="104" class="chart-axis-text">20</text>
+                    <text x="15" y="134" class="chart-axis-text">0</text>
+                    
+                    <!-- Chart Bars (Dynamically updated by JS or hardcoded default with Brutalist border) -->
+                    <!-- Bar 1 -->
+                    <rect x="55" y="40" width="22" height="90" fill="#FFFFFF" stroke="#000000" stroke-width="2.5" class="chart-bar"></rect>
+                    <rect x="58" y="43" width="16" height="84" fill="#FFE680" class="chart-bar-fill"></rect>
+                    
+                    <!-- Bar 2 -->
+                    <rect x="95" y="70" width="22" height="60" fill="#FFFFFF" stroke="#000000" stroke-width="2.5" class="chart-bar"></rect>
+                    <rect x="98" y="73" width="16" height="54" fill="#FFE680" class="chart-bar-fill"></rect>
+                    
+                    <!-- Bar 3 -->
+                    <rect x="135" y="20" width="22" height="110" fill="#FFFFFF" stroke="#000000" stroke-width="2.5" class="chart-bar"></rect>
+                    <rect x="138" y="23" width="16" height="104" fill="#FFE680" class="chart-bar-fill"></rect>
+                    
+                    <!-- Bar 4 -->
+                    <rect x="175" y="85" width="22" height="45" fill="#FFFFFF" stroke="#000000" stroke-width="2.5" class="chart-bar"></rect>
+                    <rect x="178" y="88" width="16" height="39" fill="#FFE680" class="chart-bar-fill"></rect>
+                    
+                    <!-- Bar 5 -->
+                    <rect x="215" y="50" width="22" height="80" fill="#FFFFFF" stroke="#000000" stroke-width="2.5" class="chart-bar"></rect>
+                    <rect x="218" y="53" width="16" height="74" fill="#FFE680" class="chart-bar-fill"></rect>
+                    
+                    <!-- Bar 6 -->
+                    <rect x="255" y="30" width="22" height="100" fill="#FFFFFF" stroke="#000000" stroke-width="2.5" class="chart-bar"></rect>
+                    <rect x="258" y="33" width="16" height="94" fill="#FFE680" class="chart-bar-fill"></rect>
+                    
+                    <!-- X Axis Labels -->
+                    <text x="66" y="148" class="chart-axis-text text-center">M</text>
+                    <text x="106" y="148" class="chart-axis-text text-center">T</text>
+                    <text x="146" y="148" class="chart-axis-text text-center">W</text>
+                    <text x="186" y="148" class="chart-axis-text text-center">T</text>
+                    <text x="226" y="148" class="chart-axis-text text-center">F</text>
+                    <text x="266" y="148" class="chart-axis-text text-center">S</text>
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Additional metrics list -->
+              <div class="metric-list">
+                <div class="metric-row">
+                  <span>Cycle Time Average</span>
+                  <span class="badge badge-yellow">1.4 Days</span>
+                </div>
+                <div class="metric-row">
+                  <span>Bottlenecks Detected</span>
+                  <span class="badge badge-black">None</span>
+                </div>
+                <div class="metric-row">
+                  <span>Resource Utilization</span>
+                  <span class="badge badge-yellow">88.5%</span>
+                </div>
+              </div>
+            </section>
+            
+            <!-- SECTION 4: SETTINGS -->
+            <section class="content-section" id="sec-settings">
+              <div class="view-header">
+                <h2>Application Settings</h2>
+                <p>Modify environment settings and preferences.</p>
+              </div>
+              
+              <div class="form-container-card mb-16">
+                <h4 class="form-title">Profile Configurations</h4>
+                <form id="settings-profile-form" onsubmit="handleSaveSettings(event)">
+                  <div class="form-group">
+                    <label for="profile-name" class="form-label">Display Name</label>
+                    <input type="text" id="profile-name" class="form-input" value="Krishna Prasad" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="profile-email" class="form-label">Email Address</label>
+                    <input type="email" id="profile-email" class="form-input" value="krishna@kiricode.com" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="workspace-select" class="form-label">Primary Workspace</label>
+                    <select id="workspace-select" class="form-input">
+                      <option value="kiricode" selected>KIriCode Sandbox</option>
+                      <option value="production">Production V1</option>
+                      <option value="staging">Beta Staging</option>
+                    </select>
+                  </div>
+                  
+                  <!-- Toggle Controls -->
+                  <div class="setting-toggle-group">
+                    <div class="toggle-control-row">
+                      <div class="toggle-text">
+                        <span class="toggle-title">System Push Notifications</span>
+                        <p class="toggle-desc">Receive real-time system warnings and deployments</p>
+                      </div>
+                      <label class="brutalist-switch">
+                        <input type="checkbox" id="toggle-notifications" checked>
+                        <span class="switch-slider"></span>
+                      </label>
+                    </div>
+                    
+                    <div class="toggle-control-row">
+                      <div class="toggle-text">
+                        <span class="toggle-title">Compact Board Mode</span>
+                        <p class="toggle-desc">Reduce typography padding and borders on tables</p>
+                      </div>
+                      <label class="brutalist-switch">
+                        <input type="checkbox" id="toggle-compact">
+                        <span class="switch-slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  <button type="submit" class="btn btn-yellow w-full justify-center mt-16">Save Configuration</button>
+                </form>
+              </div>
+              
+              <!-- Dangerous actions block -->
+              <div class="danger-zone-card">
+                <h4>Danger Zone</h4>
+                <p>Actions performed here cannot be easily undone.</p>
+                <div class="flex gap-8 mt-12">
+                  <button class="btn btn-secondary" onclick="simulateAlert('warning', 'Cache cleared successfully.')">Clear Cache</button>
+                  <button class="btn btn-danger" onclick="triggerResetConfirmation()">Reset Data</button>
+                </div>
+              </div>
+            </section>
+            
+          </main>
+          
+          <!-- Sticky Bottom Navigation Bar -->
+          <nav class="app-nav">
+            <button class="nav-item active" id="nav-dashboard" onclick="goToTab('dashboard')">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="9"></rect>
+                <rect x="14" y="3" width="7" height="5"></rect>
+                <rect x="14" y="12" width="7" height="9"></rect>
+                <rect x="3" y="16" width="7" height="5"></rect>
+              </svg>
+              <span class="nav-label">Home</span>
+            </button>
+            <button class="nav-item" id="nav-tasks" onclick="goToTab('tasks')">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+              <span class="nav-label">Tasks</span>
+            </button>
+            <button class="nav-item" id="nav-analytics" onclick="goToTab('analytics')">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+              <span class="nav-label">Stats</span>
+            </button>
+            <button class="nav-item" id="nav-settings" onclick="goToTab('settings')">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+              <span class="nav-label">Settings</span>
+            </button>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Main Script -->
+  <script src="app.js"></script>
+</body>
+</html>
