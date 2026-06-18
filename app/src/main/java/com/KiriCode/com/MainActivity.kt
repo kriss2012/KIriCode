@@ -2,6 +2,7 @@ package com.KiriCode.com
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.*
@@ -83,6 +84,39 @@ fun Modifier.brutalistShadow(
         topLeft = Offset(offsetPx, offsetPx),
         size = size,
         cornerRadius = CornerRadius(cornerRadius.toPx(), cornerRadius.toPx())
+    )
+}
+
+fun Modifier.bottomBorder(width: Dp, color: Color): Modifier = this.drawBehind {
+    val strokeWidth = width.toPx()
+    val y = size.height - strokeWidth / 2
+    drawLine(
+        color = color,
+        start = Offset(0f, y),
+        end = Offset(size.width, y),
+        strokeWidth = strokeWidth
+    )
+}
+
+fun Modifier.topBorder(width: Dp, color: Color): Modifier = this.drawBehind {
+    val strokeWidth = width.toPx()
+    val y = strokeWidth / 2
+    drawLine(
+        color = color,
+        start = Offset(0f, y),
+        end = Offset(size.width, y),
+        strokeWidth = strokeWidth
+    )
+}
+
+fun Modifier.rightBorder(width: Dp, color: Color): Modifier = this.drawBehind {
+    val strokeWidth = width.toPx()
+    val x = size.width - strokeWidth / 2
+    drawLine(
+        color = color,
+        start = Offset(x, 0f),
+        end = Offset(x, size.height),
+        strokeWidth = strokeWidth
     )
 }
 
@@ -511,7 +545,7 @@ fun KiriFlowApp() {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.White)
-                .border(bottom = BorderStroke(4.dp, BrutalistBlackColor))
+                .bottomBorder(4.dp, BrutalistBlackColor)
                 .padding(horizontal = 16.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
@@ -721,7 +755,7 @@ fun KiriFlowApp() {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.White)
-                .border(top = BorderStroke(4.dp, BrutalistBlackColor))
+                .topBorder(4.dp, BrutalistBlackColor)
                 .padding(vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceAround
@@ -1376,7 +1410,7 @@ fun AnalyticsScreen(
                             .fillMaxHeight()
                             .fillMaxWidth(0.78f)
                             .background(BrutalistAccentColor)
-                            .border(right = BorderStroke(2.5.dp, BrutalistBlackColor))
+                            .rightBorder(2.5.dp, BrutalistBlackColor)
                     )
                 }
 
